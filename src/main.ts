@@ -21,30 +21,28 @@ interface Comic {
     day: string
     month: string
     year: string
+    title: string
+}
+
+function handleComic(data: Comic) {
+    myImg.setAttribute('src', data.img)
+    myImg.setAttribute('alt', data.alt)
+    imgTitle.textContent = 'Title: ' + data.title
+    imgAlt.textContent = 'Alt: ' + data.alt
+    const date = new Date(parseInt(data.year), parseInt(data.month) - 1, parseInt(data.day)).toLocaleDateString();
+    imgDate.textContent = 'Date: ' + date
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
     const id: string = await fetchId()
     myId.textContent = id.toString()
     const data: Comic = await fetchImage(id)
-    console.log(data)
-    // const image = await fetchImage(id)
-    // myImg.setAttribute('src', image.img)
-    // myImg.setAttribute('alt', image.alt)
-    // imgTitle.textContent = 'Title: ' + image.title
-    // imgAlt.textContent = 'Alt: ' + image.alt
-    // const date = new Date(image.year, parseInt(image.month) - 1, image.day).toLocaleDateString();
-    // imgDate.textContent = 'Date: ' + date
+    handleComic(data)
 })
 
-// getRandomBtn.addEventListener('click', async function (e) {
-//     const id = Math.floor(Math.random() * 1000)
-//     myRandomId.textContent = id
-//     const image = await fetchImage(id)
-//     myImg.setAttribute('src', image.img)
-//     myImg.setAttribute('alt', image.alt)
-//     imgTitle.textContent = 'Title: ' + image.title
-//     imgAlt.textContent = 'Alt: ' + image.alt
-//     const date = new Date(image.year, parseInt(image.month) - 1, image.day).toLocaleDateString();
-//     imgDate.textContent = 'Date: ' + date
-// });
+getRandomBtn.addEventListener('click', async function (e) {
+    const id: string = Math.floor(Math.random() * 1000).toString()
+    myRandomId.textContent = id
+    const data: Comic = await fetchImage(id)
+    handleComic(data)
+});
