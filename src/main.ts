@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     handleComic(data)
 })
 
-getRandomBtn.addEventListener('click', async function (e) {
+getRandomBtn.addEventListener('click', async function () {
     const id: string = Math.floor(Math.random() * 1000).toString()
     myRandomId.textContent = id
     const data: Comic = await fetchImage(id)
