@@ -1,0 +1,23 @@
+{
+  "name": "3_assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "watch": "rollup --config rollup.config.js --watch",
+    "browser": "browser-sync start --server --files \"css/*.css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "tslib": "^2.5.0"
+  },
+  "dependencies": {
+    "@rollup/plugin-terser": "^0.4.0"
+  }
+}
